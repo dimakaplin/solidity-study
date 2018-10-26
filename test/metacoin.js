@@ -31,7 +31,7 @@ describe("It is rewritting of Metacoin Contract, in this implementation value of
       return MetaCoin.deployed().then(function(instance) {
         meta = instance;
         meta.setName(newName);
-        return meta.getName();
+        return meta.getName.call();
       }).then(function(name){
       // console.log(name);
         assert.equal(name, newName, "its not good, setter of name does`t")})
@@ -67,7 +67,7 @@ describe("It is rewritting of Metacoin Contract, in this implementation value of
       }).then(function(balance) {
         account_two_ending_balance = balance.toNumber();
       }).then(function() {
-        return meta.amountFromName();
+        return meta.amountFromName.call();
       }).then(function(coin){coins = coin.toNumber()
         console.log(coins)
         assert.equal(account_one_ending_balance, account_one_starting_balance - coins, "Amount wasn't correctly taken from the sender");
